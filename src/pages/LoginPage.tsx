@@ -25,8 +25,8 @@ const LoginPage: FC = () => {
                 </fieldset>
 
                 <div className="login__buttons">
-                    <CustomButton variant={ButtonVariant.primary}>Войти</CustomButton>
-                    <CustomButton variant={ButtonVariant.alternate}>Регистрация</CustomButton>
+                    <CustomButton height={'36px'} variant={ButtonVariant.primary}>Войти</CustomButton>
+                    <CustomButton height={'36px'} variant={ButtonVariant.alternate}>Регистрация</CustomButton>
                 </div>
 
             </form>
