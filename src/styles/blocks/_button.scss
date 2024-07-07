@@ -1,0 +1,22 @@
+@import "../variables";
+
+.button {
+  border: none;
+  outline: none;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+
+  &__primary {
+    background-color: $color-main-light;
+    color: $color-light;
+    border-radius: $border-radius;
+    font-weight: 500;
+  }
+
+  &__alternate {
+    background-color: transparent;
+    color: $color-main-light;
+  }
+}
