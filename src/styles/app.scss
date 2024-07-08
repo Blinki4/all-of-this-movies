@@ -1,4 +1,4 @@
-@import 'normalize', 'fonts', 'variables', 'blocks/button', "blocks/navbar", 'blocks/main', 'blocks/login';
+@import 'normalize', 'fonts', 'variables', 'mixins', 'blocks/button', 'blocks/section', "blocks/navbar", 'blocks/main', 'blocks/trend', 'blocks/film', 'blocks/login';
 
 body {
   font-family: 'Noto Sans', sans-serif;
@@ -6,7 +6,4 @@ body {
   color: $color-light;
 }
 
-.section {
-  padding: 30px 40px;
-}
 

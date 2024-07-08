@@ -1,0 +1,12 @@
+@import "../variables";
+
+.section {
+  padding: 30px 70px;
+
+
+  &__header {
+    position: relative;
+    margin-bottom: 20px;
+    transition: $transition;
+  }
+}

@@ -7,6 +7,7 @@
     height: 700px;
     opacity: 40%;
     object-fit: cover;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   }
 
 
@@ -20,8 +21,8 @@
     font-size: 40px;
     font-weight: bold;
     margin-bottom: 10px;
-  }
 
+  }
 
   &__button {
     height: 60px;
@@ -36,7 +37,7 @@
     transition: $transition;
 
     &-wrapper {
-      padding-left: 15px;
+     
     }
 
     &:hover {

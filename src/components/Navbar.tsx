@@ -15,7 +15,7 @@ const Navbar: FC = () => {
                     <NavLink className='navbar__link' to={'/series'}>Сериалы</NavLink>
                 </li>
                 <li className='navbar__item'>
-                    <NavLink className='navbar__link' to={'/peoples'}>Люди</NavLink>
+                    <NavLink className='navbar__link' to={'/people'}>Люди</NavLink>
                 </li>
                 <li className='navbar__item' style={{marginLeft: 'auto'}}>
                     <NavLink className='navbar__link' to={'/login'}>Войти</NavLink>
