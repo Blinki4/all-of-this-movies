@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import Navbar from "./components/Navbar";
 import LoginPage from "./pages/LoginPage";
+import MovieItemPage from "./pages/MovieItemPage";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Routes>
                     <Route path={'/'} element={<MainPage/>}/>
                     <Route path={'/login'} element={<LoginPage/>}/>
+                    <Route path={'/movie/:id'} element={<MovieItemPage/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

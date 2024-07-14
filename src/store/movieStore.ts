@@ -2,6 +2,7 @@ import {create, StateCreator} from "zustand";
 import {IMovie} from "../types/IMovie";
 import {immer} from "zustand/middleware/immer";
 import KinopoiskApi from "../api/kinopoiskApi";
+import {IMovies} from "../types/IMovies";
 
 
 interface MovieState {

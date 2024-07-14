@@ -1,24 +1,18 @@
 import React, {FC, useEffect} from 'react';
-import {IMovie} from "../types/IMovie";
 import MoviesList from "../components/MoviesList";
 import Hero from "../components/Hero";
-import KinopoiskApi from "../api/kinopoiskApi";
 import {useMovieStore} from "../store/movieStore";
-import loginPage from "./LoginPage";
-import {deflateRaw} from "node:zlib";
-import {log} from "node:util";
+import KinopoiskApi from "../api/kinopoiskApi";
+import {useNavigate} from "react-router-dom";
 
 
 const MainPage: FC = () => {
-
-
+    const navigateTo = useNavigate()
     const {movies, getNewMovies, isLoading, error} = useMovieStore(state => state)
 
-
     useEffect(() => {
-        getNewMovies(10, 1)
+        getNewMovies(20, 1)
     }, []);
-
 
     if (isLoading) {
         return <h1>Загрузка, подождите</h1>
@@ -27,6 +21,11 @@ const MainPage: FC = () => {
     if (error) {
         return <h1>{error}</h1>
     }
+
+    const onMovieClick = (id: number) => {
+        navigateTo('/movie/' + id)
+    }
+    
 
     return (
         <main className='main-page'>
@@ -41,7 +40,11 @@ const MainPage: FC = () => {
                     <ul className='trend__list'>
                         <MoviesList moviesList={movies} renderItem={
                             (movie) =>
-                                <li key={movie.id} className='trend__item film'>
+                                <li
+                                    key={movie.id}
+                                    className='trend__item film'
+                                    onClick={() => onMovieClick(movie.id)}
+                                >
                                     <img
                                         className='film__image'
                                         width={150}
