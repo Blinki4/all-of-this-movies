@@ -1,6 +1,7 @@
 import axios from "axios";
 import {serializeParams} from "../utils/serializeParams";
 import {getCurrentYear} from "../utils/getCurrentYear";
+import {IMovie} from "../types/IMovie";
 
 export default class KinopoiskApi {
 
@@ -22,8 +23,7 @@ export default class KinopoiskApi {
                 'X-API-KEY': this.apiKey
             },
         })
-        console.log(response.data.docs)
-        return response.data;
+        return response.data.docs;
     }
 }
 
