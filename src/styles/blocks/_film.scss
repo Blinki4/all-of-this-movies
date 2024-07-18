@@ -17,13 +17,13 @@
     width: 100%;
     border-top-right-radius: $border-radius;
     border-top-left-radius: $border-radius;
+
   }
 
   &__info {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-
     width: 100%;
     padding: 15px 10px;
     text-align: left;
@@ -37,9 +37,9 @@
   }
 
   &__date {
-    margin-top: 10px;
     color: $color-grey;
     font-size: 14px;
     text-align: right;
   }
 }
+

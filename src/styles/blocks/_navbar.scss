@@ -11,7 +11,7 @@
   column-gap: 30px;
 
   &__logo {
-    color: $color-light;
+    color: $color-main-light;
     text-decoration: none;
     margin-right: 30px;
     font-family: 'Anton SC', sans-serif;
@@ -46,6 +46,7 @@
   }
 
   &__search:hover {
+    transition: $transition;
     color: $color-grey;
     font-weight: 500;
   }

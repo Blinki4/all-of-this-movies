@@ -1,8 +1,8 @@
-import React, {FC, useEffect, useState} from 'react';
-import {useParams, useNavigate} from "react-router-dom";
-import {IMovie} from "../types/IMovie";
-import axios from "axios";
+import React, {FC} from 'react';
+import {useParams} from "react-router-dom";
 import KinopoiskApi from "../api/kinopoiskApi";
+import useFetching from "../hooks/useFetching";
+
 
 type MovieItemParams = {
     id: string
@@ -10,26 +10,23 @@ type MovieItemParams = {
 
 const MovieItemPage: FC = () => {
 
-    const [movie, setMovie] = useState<null | IMovie>(null)
-    const params = useParams<MovieItemParams>()
-    const navigateTo = useNavigate()
 
-    const getMovie = async () => {
-        const response = await axios.get(KinopoiskApi.baseUrl + `/movie/${params.id}`, {
-            headers: {
-                'X-API-KEY': 'A79KAPT-Z90MT84-NJ6H62R-H6MHJZD',
-            }
-        })
-        setMovie(response.data)
+    const params = useParams<MovieItemParams>()
+    const [data, isLoading, error] = useFetching(async () => await KinopoiskApi.getMovie(params.id!))
+
+
+    if (isLoading) {
+        return <h1>Загрузка фильма, подождите...</h1>
     }
 
-    useEffect(() => {
-        getMovie()
-    }, []);
+    if (error) {
+        return <h1 className='error'>{error}</h1>
+    }
+
 
     return (
         <div>
-            <h1>{movie?.name}</h1>
+            <h1>{data?.name}</h1>
         </div>
     );
 };

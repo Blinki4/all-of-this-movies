@@ -1,0 +1,60 @@
+@import "../variables";
+
+.rating-gold {
+  height: 25px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  border-radius: 4px;
+  font-weight: 600;
+  background: linear-gradient(315deg, #FFD36E, #ececc5, #FFD36E);
+  color: black;
+}
+
+.rating-high {
+  height: 25px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  border-radius: 4px;
+  background: forestgreen;
+  color: $color-light;
+}
+
+.rating-medium {
+  height: 25px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 4px;
+  background: yellow;
+  color: $color-dark;
+}
+
+.rating-low {
+  height: 25px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  border-radius: 4px;
+  font-weight: 600;
+  background: $color-grey;
+  color: $color-light;
+
+}
+
+.rating {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
