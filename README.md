@@ -13,14 +13,9 @@
 
 ## API
 
-TMDB API - https://developer.themoviedb.org/docs/getting-started
-
-Вход на сайт осуществляется при помощи вашего логина и пароля на сайте https://www.themoviedb.org/ . Если вы находитесь
-на территории РФ, пожалуйста, используйте VPN.
+API - https://kinopoisk.dev/
 
 This project contains all movies. The project was carried out as part of an educational pet project, not for commercial
 use.
 
-If you are in the Russian Federation, you must enable VPN.
-
-Based on TMDB API
+Based on fake kinopoisk API
