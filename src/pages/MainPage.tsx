@@ -1,11 +1,8 @@
 import React, { FC, useEffect, useState } from 'react'
 import MoviesList from '../components/MoviesList'
 import Hero from '../components/Hero'
-import { useMovieStore } from '../store/movieStore'
 import KinopoiskApi from '../api/kinopoiskApi'
-import { useNavigate } from 'react-router-dom'
 import { IMovie } from '../types/IMovie'
-import RatingBadge from '../components/ui/RatingBadge'
 import { MovieCard } from '../components/MovieCard'
 
 const MainPage: FC = () => {
@@ -20,7 +17,7 @@ const MainPage: FC = () => {
     setMovies(await KinopoiskApi.getNewMovies(10, 1))
     setSeries(await KinopoiskApi.getNewSeries(10, 1))
   }
-  //todo Переделать на хук
+  //Todo Переделать на хук
 
   //   if (isLoading) {
   //     return <h1>Загрузка, подождите</h1>
