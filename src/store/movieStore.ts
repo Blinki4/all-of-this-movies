@@ -1,49 +1,44 @@
-import {create, StateCreator} from "zustand";
-import {IMovie} from "../types/IMovie";
-import {immer} from "zustand/middleware/immer";
-import KinopoiskApi from "../api/kinopoiskApi";
-import {IMovies} from "../types/IMovies";
-
+import { create, StateCreator } from 'zustand'
+import { IMovie } from '../types/IMovie'
+import { immer } from 'zustand/middleware/immer'
+import KinopoiskApi from '../api/kinopoiskApi'
+import { IMovies } from '../types/IMovies'
 
 interface MovieState {
-    movies: IMovie[];
-    isLoading: boolean;
-    error: string,
+  movies: IMovie[]
+  isLoading: boolean
+  error: string
 }
-
 
 interface MovieActions {
-    addMovie: (movie: IMovie) => void;
-    setMovies: (movies: IMovie[]) => void;
-    getNewMovies: (limit: number, page: number) => void;
+  addMovie: (movie: IMovie) => void
+  setMovies: (movies: IMovie[]) => void
+  // getNewMovies: (limit: number, page: number) => void;
 }
 
-
 export const useMovieStore = create<MovieState & MovieActions>((set) => ({
-    movies: [],
-    isLoading: false,
-    error: '',
+  movies: [],
+  isLoading: false,
+  error: '',
 
-    getNewMovies: async (limit, page) => {
-        set({isLoading: true})
-        try {
-            const response = await KinopoiskApi.getNewMovies(limit, page)
-            set({movies: response})
-        } catch (e: unknown) {
-            if (typeof e === 'string') {
-                set({error: e})
-            } else if (e instanceof Error) {
-                set({error: e.message})
-            }
-        } finally {
-            set({isLoading: false})
-        }
-    },
+  // getNewMovies: async (limit, page) => {
+  //     set({isLoading: true})
+  //     try {
+  //         const response = await KinopoiskApi.getNewMovies(limit, page)
+  //         set({movies: response})
+  //     } catch (e: unknown) {
+  //         if (typeof e === 'string') {
+  //             set({error: e})
+  //         } else if (e instanceof Error) {
+  //             set({error: e.message})
+  //         }
+  //     } finally {
+  //         set({isLoading: false})
+  //     }
+  // },
 
-    setMovies: () => {
-    },
-    addMovie: () => {
-    },
+  setMovies: () => {},
+  addMovie: () => {},
 }))
 
 // @ts-ignore
@@ -76,7 +71,6 @@ export const useMovieStore = create<MovieState & MovieActions>((set) => ({
 //         state.movies = [...state.movies, ...movies]
 //     }),
 // })))
-
 
 // type ImmerStateCreator<T> = StateCreator<
 //     T,

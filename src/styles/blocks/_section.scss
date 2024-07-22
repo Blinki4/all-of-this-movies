@@ -1,8 +1,12 @@
-@import "../variables";
+@import '../variables';
 
 .section {
-  padding: 30px 70px;
+  padding: 50px 150px;
 
+  &--hidden-x {
+    padding: 50px 150px;
+    overflow-x: hidden;
+  }
 
   &__header {
     position: relative;

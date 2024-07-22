@@ -1,4 +1,4 @@
-@import "../variables";
+@import '../variables';
 
 .film {
   position: relative;
@@ -7,17 +7,17 @@
   align-items: center;
   justify-content: space-between;
   min-width: 225px;
-  height: 320px;
+  width: 225px;
+
   border: 2px solid $color-main;
   border-radius: $border-radius;
-
 
   &__image {
     object-fit: cover;
     width: 100%;
+    height: 300px;
     border-top-right-radius: $border-radius;
     border-top-left-radius: $border-radius;
-
   }
 
   &__info {
@@ -33,7 +33,6 @@
     color: $color-light;
     text-decoration: none;
     font-size: 20px;
-
   }
 
   &__date {
@@ -42,4 +41,3 @@
     text-align: right;
   }
 }
-

@@ -1,9 +1,9 @@
-@import 'normalize', 'fonts', 'variables', 'mixins', 'blocks/button', 'blocks/section', "blocks/navbar", 'blocks/main', 'blocks/trend', 'blocks/film', 'blocks/login', 'blocks/rating';
+@import 'normalize', 'fonts', 'variables', 'mixins', 'blocks/button',
+  'blocks/section', 'blocks/navbar', 'blocks/main', 'blocks/trend',
+  'blocks/film', 'blocks/login', 'blocks/rating', 'blocks/films';
 
 body {
   font-family: 'Noto Sans', sans-serif;
   background-color: $color-dark;
   color: $color-light;
 }
-
-
