@@ -1,0 +1,45 @@
+@import "../variables";
+
+.film {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 225px;
+  height: 320px;
+  border: 2px solid $color-main;
+  border-radius: $border-radius;
+
+
+  &__image {
+    object-fit: cover;
+    width: 100%;
+    border-top-right-radius: $border-radius;
+    border-top-left-radius: $border-radius;
+
+  }
+
+  &__info {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    padding: 15px 10px;
+    text-align: left;
+  }
+
+  &__name {
+    color: $color-light;
+    text-decoration: none;
+    font-size: 20px;
+
+  }
+
+  &__date {
+    color: $color-grey;
+    font-size: 14px;
+    text-align: right;
+  }
+}
+

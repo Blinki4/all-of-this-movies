@@ -1,0 +1,33 @@
+@import "../variables";
+
+.button {
+  height: 36px;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: $transition;
+
+  &__primary {
+    background-color: $color-main-light;
+    color: $color-light;
+    border-radius: $border-radius;
+    font-weight: 500;
+
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__alternate {
+    background-color: transparent;
+    color: $color-main-light;
+
+    &:hover {
+      color: $color-main-dark;
+    }
+  }
+}
