@@ -1,43 +1,64 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, {FC, useEffect, useLayoutEffect, useRef, useState} from 'react'
 import KinopoiskApi from '../api/kinopoiskApi'
-import { IMovie } from '../types/IMovie'
+import {IMovie} from '../types/IMovie'
 import MoviesList from '../components/MoviesList'
-import { MovieCard } from '../components/MovieCard'
+import {MovieCard} from '../components/MovieCard'
+import {useMovieStore} from "../store/movieStore";
+import Loader from "../components/ui/Loader";
 
 export const FilmsPage: FC = () => {
-  const [movies, setMovies] = useState<IMovie[]>([])
-  const [page, setPage] = useState(1)
-  const lastElement = useRef<HTMLDivElement | null>(null)
-  const observer = useRef<IntersectionObserver | null>(null)
+    const [movies, setMovies] = useState<IMovie[]>([])
+    const [page, setPage] = useState(1)
+    const {isLoading, setIsLoading} = useMovieStore(state => state)
+    const lastElement = useRef<HTMLDivElement | null>(null)
+    const observer = useRef<IntersectionObserver | null>(null)
 
-  const fetchMovies = async () => {
-    const response = await KinopoiskApi.getTopMovies(10, page)
-    setMovies([...movies, ...response])
-  }
 
-  useEffect(() => {
-    const callback = function () {
-      setPage((prev) => prev + 1)
+    const fetchMovies = async () => {
+        try {
+            setIsLoading(true)
+            const response = await KinopoiskApi.getTopMovies(20, page)
+            setMovies([...movies, ...response])
+        } catch (e) {
+            console.log(e)
+        } finally {
+            setIsLoading(false)
+        }
     }
-    observer.current = new IntersectionObserver(callback)
-    observer.current.observe(lastElement.current!)
-  }, [])
 
-  useEffect(() => {
-    fetchMovies()
-  }, [page])
+    useEffect(() => {
+        const callback = function () {
+            if (isLoading) {
+                return
+            }
+            console.log('триггер')
+            setPage((prev) => prev + 1)
+        }
+        observer.current = new IntersectionObserver(callback)
+        observer.current.observe(lastElement.current!)
+    }, [])
 
-  return (
-    <>
-      <section className="section--hidden-x">
-        <div className="films__list">
-          <MoviesList
-            moviesList={movies}
-            renderItem={(movie) => <MovieCard movie={movie} key={movie.id} />}
-          />
-          <div ref={lastElement}></div>
-        </div>
-      </section>
-    </>
-  )
+
+    useEffect(() => {
+        if (isLoading) {
+            return
+        }
+        fetchMovies()
+    }, [page])
+
+
+    return (
+        <>
+            <section className="section--hidden-x">
+                <div className="films__list">
+                    <MoviesList
+                        moviesList={movies}
+                        renderItem={(movie) => <MovieCard movie={movie} key={movie.id}/>}
+                    />
+                    {isLoading && <Loader/>}
+                    <div ref={lastElement}></div>
+                </div>
+            </section>
+        </>
+    )
 }

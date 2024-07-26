@@ -1,0 +1,27 @@
+@import '../variables';
+
+.loader {
+    height: 100px;
+    width: 100px;
+    border: 4px dashed $color-main-light;
+    border-radius: 50%;
+    animation: loader-spin 10s infinite;
+
+
+    &__wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@keyframes loader-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

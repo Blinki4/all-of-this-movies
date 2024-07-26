@@ -1,9 +1,10 @@
-@import 'normalize', 'fonts', 'variables', 'mixins', 'blocks/button',
-  'blocks/section', 'blocks/navbar', 'blocks/main', 'blocks/trend',
-  'blocks/film', 'blocks/login', 'blocks/rating', 'blocks/films';
+@import 'normalize', 'fonts', 'variables', 'globals', 'mixins', 'blocks/button', 'blocks/section', "blocks/navbar", 'blocks/main', 'blocks/trend', 'blocks/film', 'blocks/login', 'blocks/rating', 'blocks/films', 'blocks/movie-item', 'blocks/loader', 'blocks/about', 'blocks/search-form';
 
 body {
-  font-family: 'Noto Sans', sans-serif;
-  background-color: $color-dark;
-  color: $color-light;
+    font-family: 'Noto Sans', sans-serif;
+    background-color: $color-dark;
+    color: $color-light;
+    font-size: 16px;
 }
+
+
