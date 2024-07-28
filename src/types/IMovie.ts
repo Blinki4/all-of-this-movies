@@ -81,7 +81,7 @@ interface IMovieReleaseYears {
     end: number;
 }
 
-export interface IMovie {
+export type IMovie = {
     id: number;
     name: string;
     alternativeName: string;

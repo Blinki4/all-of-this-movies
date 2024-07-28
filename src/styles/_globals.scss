@@ -1,0 +1,12 @@
+@import 'variables';
+
+
+.input {
+    height: 36px;
+    width: 100%;
+    background-color: transparent;
+    border-radius: $border-radius-small;
+    border: 1px solid $color-main-light;
+    color: $color-light;
+    outline: none;
+}
