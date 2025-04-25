@@ -25,7 +25,7 @@ interface IMovieTrailers {
     type: string;
 }
 
-interface IMoviePersons {
+export interface IMoviePerson {
     id: number;
     photo: string;
     name: string;
@@ -81,8 +81,15 @@ interface IMovieReleaseYears {
     end: number;
 }
 
+interface IMovieExternalId {
+    kpHD: string;
+    imdb: string;
+    tmdb: number;
+}
+
 export type IMovie = {
     id: number;
+    externalId: IMovieExternalId;
     name: string;
     alternativeName: string;
     enName: string;
@@ -104,7 +111,7 @@ export type IMovie = {
     videos: { trailers: IMovieTrailers[] };
     genres: { name: string }[];
     countries: { name: string }[];
-    persons: IMoviePersons[];
+    persons: IMoviePerson[];
     seasonsInfo?: IMovieSeasonsInfo[];
     budget: IMovieBudget;
     fees: IMovieFees;

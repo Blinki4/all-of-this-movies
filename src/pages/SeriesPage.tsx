@@ -1,12 +1,12 @@
-import React, {FC, useEffect, useRef, useState} from 'react'
-import KinopoiskApi from '../api/kinopoiskApi'
-import {IMovie} from '../types/IMovie'
-import MoviesList from '../components/MoviesList'
-import {MovieCard} from '../components/MovieCard'
+import React, {FC, useEffect, useRef, useState} from "react";
+import {IMovie} from "../types/IMovie";
 import {useMovieStore} from "../store/movieStore";
+import KinopoiskApi from "../api/kinopoiskApi";
+import MoviesList from "../components/MoviesList";
+import {MovieCard} from "../components/MovieCard";
 import Loader from "../components/ui/Loader";
 
-export const FilmsPage: FC = () => {
+export const SeriesPage: FC = () => {
     const [movies, setMovies] = useState<IMovie[]>([])
     const [page, setPage] = useState(1)
     const {isLoading, setIsLoading} = useMovieStore(state => state)
@@ -17,7 +17,7 @@ export const FilmsPage: FC = () => {
     const fetchMovies = async () => {
         try {
             setIsLoading(true)
-            const response = await KinopoiskApi.getTopMovies(20, page)
+            const response = await KinopoiskApi.getNewSeries(20, page)
             setMovies([...movies, ...response])
         } catch (e) {
             console.log(e)

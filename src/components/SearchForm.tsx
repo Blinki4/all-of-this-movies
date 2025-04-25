@@ -19,8 +19,8 @@ const SearchForm: FC<SearchFormProps> = ({visible}) => {
     const navigateTo = useNavigate()
 
     const onMovieClick = (id: string) => {
-        setIsSearch(false)
         navigateTo('/movie/' + id)
+        setIsSearch(false)
     }
 
 

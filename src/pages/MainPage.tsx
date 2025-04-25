@@ -40,10 +40,10 @@ const MainPage: FC = () => {
     return (
         <main className="main-page">
             <Hero
-                title={movies[0]?.name}
-                image={movies[0]?.backdrop.url}
-                id={movies[0]?.id}
-                description={movies[0]?.shortDescription}
+                title={movies[2]?.name}
+                image={movies[2]?.backdrop?.url}
+                id={movies[2]?.id}
+                description={movies[2]?.shortDescription}
             />
 
             <section className="section trend">

@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import KinopoiskApi from "../api/kinopoiskApi";
 import useFetching from "../hooks/useFetching";
@@ -6,6 +6,8 @@ import Loader from "../components/ui/Loader";
 import {getCountiesString} from "../utils/getCountiesString";
 import {IMovie} from "../types/IMovie";
 import CustomButton, {ButtonVariant} from "../components/ui/CustomButton";
+import KinoboxPlayer from "../components/KinoboxPlayer";
+import PersonsList from "../components/PersonsList";
 
 
 type MovieItemParams = {
@@ -16,12 +18,31 @@ const MovieItemPage: FC = () => {
     const params = useParams<MovieItemParams>()
     const {data, isLoading, error} = useFetching<IMovie>(async () => await KinopoiskApi.getMovie(params.id!))
 
+    useEffect(() => {
+        const script = document.createElement('script')
+        script.src = 'https://kinobox.tv/kinobox.min.js'
+        script.async = true
+
+        document.body.appendChild(script)
+
+        return () => {
+            document.body.removeChild(script)
+        }
+    }, []);
+
+
     if (isLoading) {
         return <Loader/>
     }
 
     if (error) {
         return <h1 className='error'>{error.toString()}</h1>
+    }
+
+
+    const scrollToWatch = () => {
+        const player = document.getElementById('watch')
+        player?.scrollIntoView()
     }
 
     return (
@@ -115,15 +136,25 @@ const MovieItemPage: FC = () => {
                         <span>Критики</span>
                         {data?.rating?.filmCritics}
                     </div>
-                    <CustomButton height={'40px'} variant={ButtonVariant.primary}>
+                    <CustomButton height={'40px'} variant={ButtonVariant.alternate}>
                         В избранное
+                    </CustomButton>
+                    <CustomButton onClick={scrollToWatch} height={'40px'} variant={ButtonVariant.primary}>
+                        Смотреть
                     </CustomButton>
                 </div>
             </div>
             <div className={'hr'}></div>
+            <h2 className='movie-item__section-title'>Описание</h2>
             <div className='movie-item__description'>
                 {data?.description}
             </div>
+            <div className={'hr'}></div>
+            <h2 id='watch' className='movie-item__section-title'>Смотреть</h2>
+            <KinoboxPlayer kpId={data?.id.toString()!}/>
+            <div className={'hr'}></div>
+            <h2 className='movie-item__section-title'>Съемочная группа</h2>
+            <PersonsList persons={data?.persons!}/>
         </section>
     );
 };

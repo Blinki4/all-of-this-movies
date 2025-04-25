@@ -6,9 +6,11 @@ import Navbar from './components/Navbar'
 import LoginPage from './pages/LoginPage'
 import MovieItemPage from './pages/MovieItemPage'
 import {FilmsPage} from './pages/FilmsPage'
-import Loader from "./components/ui/Loader";
+import {SeriesPage} from './pages/SeriesPage'
 import SearchForm from "./components/SearchForm";
 import {useMovieStore} from "./store/movieStore";
+import Footer from "./components/Footer";
+import Search from "./components/Search";
 
 function App() {
 
@@ -18,14 +20,13 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Navbar/>
-                <SearchForm visible={isSearch}/>
 
                 <Routes>
                     <Route path={'/'} element={<MainPage/>}/>
                     <Route path={'/login'} element={<LoginPage/>}/>
                     <Route path={'/movie/:id'} element={<MovieItemPage/>}/>
                     <Route path={'/films'} element={<FilmsPage/>}/>
-                    <Route path={'/series'} element={<Loader/>}/>
+                    <Route path={'/series'} element={<SeriesPage/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
